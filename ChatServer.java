@@ -1,0 +1,30 @@
+import java.net.*;
+import java.io.*;
+
+class ChatServer
+{
+    public static void main(String A[]) throws Exception
+    {
+        ServerSocket ssobj = new ServerSocket(5100);
+        System.out.println("Server is waiting at port 5100");
+
+        Socket sobj = ssobj.accept();
+        System.out.println("Client Request get accepted succesfully");
+
+        PrintStream pobj = new PrintStream(sobj.getOutputStream());
+        BufferedReader bobj1 = new BufferedReader(new InputStreamReader(sobj.getInputStream()));
+        BufferedReader bobj2 = new BufferedReader(new InputStreamReader(System.in));
+
+
+
+
+
+
+        String str = bobj1.readLine();
+        System.out.println("Client syas : "+str);
+        System.out.println("Enter messagae for client");
+        str = bobj2.readLine();
+        pobj.println(str);
+        
+ }
+}
